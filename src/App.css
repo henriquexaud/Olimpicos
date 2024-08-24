@@ -88,7 +88,7 @@
 
 /* Estilo para o segundo sidebar quando aberto */
 #secondary-nav-bar.open {
-  right: 250px; /* Ajustado para aparecer à esquerda do sidebar principal */
+  right: 270px; /* Ajustado para aparecer à esquerda do sidebar principal */
 }
 
 /* Estilo do título do segundo sidebar */
@@ -173,4 +173,94 @@
 /* Estilo para quando o campo de pesquisa do menu é hover */
 .menu-search-field:hover {
   background-color: #242424;
+}
+
+.location-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.location-form h4 {
+  margin-bottom: 15px;
+}
+
+.location-form label {
+  margin-bottom: 10px;
+}
+
+.location-form input, .location-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.location-form button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #282c34;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.location-form button:hover {
+  background-color: #242424;
+}
+
+/* Estilo do campo de seleção múltipla usando react-select */
+.basic-multi-select {
+  width: 100%;
+  margin-top: 5px;
+  background-color: #3B3B3B;
+}
+
+.select__control {
+  border-radius: 8px; /* Igual ao estilo dos botões */
+  border: 1px solid #444; /* Cor de borda para combinar com o fundo escuro */
+  background-color: #1a1a1a; /* Cor de fundo do campo de seleção */
+  color: #444; /* Cor do texto */
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.select__control--is-focused {
+  border-color: #ffffff; /* Cor da borda ao focar */
+  box-shadow: 0 0 0 1px #ffffff; /* Sombra ao focar para destacar */
+}
+
+.select__multi-value {
+  background-color: #333; /* Cor de fundo dos itens selecionados */
+  color: #141414; /* Cor do texto dos itens selecionados */
+  border-radius: 4px; /* Cor dos itens selecionados */
+}
+
+.select__multi-value__remove {
+  cursor: pointer;
+  color: #1a1a1a; /* Cor do ícone de remoção */
+}
+
+.select__menu {
+  z-index: 10000; /* Assegura que o menu de seleção esteja acima de outros elementos */
+  background-color: #1a1a1a; /* Cor de fundo do menu */
+  border-radius: 8px; /* Bordas arredondadas para o menu */
+}
+
+.select__menu-list {
+  padding: 0;
+  color: #0e0e0e; /* Cor do texto das opções */
+}
+
+.select__option {
+  background-color: #1a1a1a; /* Cor de fundo das opções */
+  color: #fff; /* Cor do texto das opções */
+}
+
+.select__option--is-selected {
+  background-color: #333; /* Cor de fundo da opção selecionada */
+}
+
+.select__option--is-focused {
+  background-color: #444; /* Cor de fundo da opção em foco */
 }
