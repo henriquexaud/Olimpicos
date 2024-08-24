@@ -4,7 +4,9 @@ import './App.css'; // Importa o CSS para ajustar o layout
 import MenuSearch from './components/MenuSearch';
 import MenuButton from './components/MenuButton';
 import { FaMapMarkerAlt, FaSearchLocation } from 'react-icons/fa';
-import { FaBars, FaCalendarDay, FaFilter, FaMap, FaStore, FaXmark } from 'react-icons/fa6';
+import { FaBars, FaCalendarDay, FaFilter, FaMap, FaStore, FaXmark, FaAngleRight } from 'react-icons/fa6';
+import { MdAddLocationAlt } from "react-icons/md";
+import LocationForm from './components/LocationForm'; // Importa o componente de formulário
 
 const App: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -25,9 +27,8 @@ const App: React.FC = () => {
     }
   }
 
-  const handleClose = () => {
+  const handleCloseSecondary = () => {
     setSecondarySidebarOpen(false);
-    setSidebarOpen(false);
   }
 
   return (
@@ -35,34 +36,34 @@ const App: React.FC = () => {
       <div className="header">
         <h3>Olímpicos</h3>
         <div className="button-container">
-        <button onClick={toggleSidebar}>
-          {sidebarOpen ? <FaXmark /> : <FaBars />}
-        </button>
+          <button onClick={toggleSidebar}>
+            {sidebarOpen ? <FaXmark /> : <FaBars />}
+          </button>
         </div>
       </div>
       <div className="main">
         <Map />
-        <div id="nav-bar" className={sidebarOpen ? 'open' : ''}>
-          <div id="secondary-nav-bar" className={secondarySidebarOpen ? 'open' : ''}>
-            <div className='secondary-header'>
-              <span className="secondary-title">{secondaryPage}</span>
-              <div className="button-container-secondary">
-                <button className='button-secondary' onClick={handleClose}>
-                  <FaXmark />
-                </button>
-              </div>
+        <div id="secondary-nav-bar" className={secondarySidebarOpen ? 'open' : ''}>
+          <div className='secondary-header'>
+            <span className="secondary-title">{secondaryPage}</span>
+            <div className="button-container-secondary">
+              <button className='button-secondary' onClick={handleCloseSecondary}>
+                <FaAngleRight />
+              </button>
             </div>
           </div>
-        <MenuSearch placeHolder="Pesquisar" icon={<FaSearchLocation />}/>
-        <MenuButton label="Mapa" onClick={() => setSecondarySidebarOpen(false)} icon={<FaMap />}/>
-        <MenuButton label="Estabelecimentos" onClick={() => handleButtonClick("Estabelecimentos")} icon={<FaMapMarkerAlt />}/>
-        {/* <MenuButton label="Perfil" onClick={handleButtonClick} icon={<FaUser />}/> */}
-        <MenuButton label="Lojas" onClick={() => handleButtonClick("Lojas")} icon={<FaStore />}/>
-        {/* <MenuButton label="Histórico" onClick={handleButtonClick} icon={<FaHistory />}/> */}
-        <MenuButton label="Eventos" onClick={() => handleButtonClick("Eventos")} icon={<FaCalendarDay  />}/>
-        <MenuButton label="Filtros" onClick={() => handleButtonClick("Filtros")} icon={<FaFilter />} />
+          {secondaryPage === "Novo Local" && <LocationForm onClose={handleCloseSecondary} />}
         </div>
-        
+        <div id="nav-bar" className={sidebarOpen ? 'open' : ''}>
+          <MenuSearch placeHolder="Pesquisar" icon={<FaSearchLocation />}/>
+          <MenuButton label="Mapa" onClick={() => setSecondarySidebarOpen(false)} icon={<FaMap />}/>
+          <MenuButton label="Novo local" onClick={() => handleButtonClick("Novo Local")} icon={<MdAddLocationAlt />}/>
+          <MenuButton label="Filtros" onClick={() => handleButtonClick("Filtros")} icon={<FaFilter />} />
+          {/* <MenuButton label="Perfil" onClick={handleButtonClick} icon={<FaUser />}/> */}
+          <MenuButton label="Lojas" onClick={() => handleButtonClick("Lojas")} icon={<FaStore />}/>
+          {/* <MenuButton label="Histórico" onClick={handleButtonClick} icon={<FaHistory />}/> */}
+          <MenuButton label="Eventos" onClick={() => handleButtonClick("Eventos")} icon={<FaCalendarDay  />}/>
+        </div>
       </div>
     </div>
   );
