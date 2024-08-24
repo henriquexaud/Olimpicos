@@ -1,38 +1,176 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Estilo geral do contêiner */
+.container {
   display: flex;
   flex-direction: column;
+  height: 100vh; /* Ocupa toda a altura da tela */
+  overflow: hidden; /* Evita scrolls indesejados */
+}
+
+/* Estilo do cabeçalho */
+.header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #282c34;
   color: white;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Garante que o cabeçalho esteja acima do sidebar e do mapa */
+  max-height: 80px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Estilo do container do botão do cabeçalho */
+.button-container {
+  display: flex;
+  position: relative; /* Corrigido para incluir unidades */
+  right: 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Estilo do container do botão secundário */
+.button-container-secondary {
+  display: flex;
+  align-self: flex-end;
+}
+
+/* Estilo dos botões secundários */
+.button-secondary {
+  background-color: #282c34;
+}
+
+/* Estilo da área principal */
+.main {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 80px); /* Ajusta a altura para compensar o cabeçalho fixo */
+  position: relative; /* Garantir que o mapa ocupe o espaço restante */
+  margin-top: 0; /* Remove o espaço extra do cabeçalho */
+}
+
+/* Estilo do mapa */
+#map {
+  flex: 1;
+  background-color: black; /* Ajustado para corresponder ao estilo desejado */
+}
+
+/* Estilo do sidebar principal */
+#nav-bar {
+  width: 250px;
+  background-color: #282c34;
+  padding: 10px;
+  position: fixed;
+  right: -270px; /* Ajustado para se alinhar corretamente */
+  top: 80px; /* Espaço abaixo do cabeçalho */
+  height: calc(100vh - 80px); /* Ajustado para não sobrepor o cabeçalho */
+  transition: right 0.3s ease;
+  z-index: 1001; /* Garante que o sidebar principal sobreponha o mapa e o secondary-sidebar */
+}
+
+/* Estilo para o sidebar principal quando aberto */
+#nav-bar.open {
+  right: 0;
+}
+
+/* Estilo do segundo sidebar */
+#secondary-nav-bar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  background-color: #282c34;
+  right: -350px; /* Ajustado para se alinhar corretamente */
+  top: 80px; /* Espaço abaixo do cabeçalho */
+  height: calc(100vh - 80px); /* Ajustado para não sobrepor o cabeçalho */
+  transition: right 0.3s ease;
+  z-index: 1000; /* Ajustado para ficar atrás do sidebar principal */
+}
+
+/* Estilo para o segundo sidebar quando aberto */
+#secondary-nav-bar.open {
+  right: 250px; /* Ajustado para aparecer à esquerda do sidebar principal */
+}
+
+/* Estilo do título do segundo sidebar */
+.secondary-title {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  background-color: #282c34;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+/* Estilo do cabeçalho do segundo sidebar */
+.secondary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #282c34;
+  color: white;
+  padding: 10px 20px;
+}
+
+/* Estilo dos botões do menu */
+.menu-button {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+  padding: 10px 20px;
+  border: none;
+  background-color: #282c34;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 8px;
+}
+
+/* Estilo para quando o botão do menu é hover */
+.menu-button:hover {
+  background-color: #242424;
+}
+
+/* Estilo do ícone do botão do menu */
+.menu-button-icon {
+  margin-right: 10px;
+}
+
+/* Estilo do rótulo do botão do menu */
+.menu-button-label {
+  font-size: 16px;
+}
+
+/* Estilo do campo de pesquisa do menu */
+.menu-search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Estilo do campo de pesquisa do menu */
+.menu-search-field {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  background-color: #282c34;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 12px 18px;
+  margin-bottom: 12px;
+}
+
+/* Estilo para quando o campo de pesquisa do menu é hover */
+.menu-search-field:hover {
+  background-color: #242424;
 }
